@@ -6,7 +6,8 @@ describe('matching engine', () => {
       learnerSkills: ['React'],
       mentorSkills: ['React', 'System Design', 'Flutter'],
       sameCity: true,
-      availabilityOverlap: 4
+      availabilityOverlap: 4,
+      learningIntentAlignment: 3
     });
 
     expect(score).toBeGreaterThan(70);

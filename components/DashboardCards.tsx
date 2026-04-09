@@ -3,7 +3,10 @@ import { FloatingOrb } from '@/animations/FloatingOrb';
 const cards = [
   { title: 'Skill Value', content: 'React +78, Flutter +62, System Design +81' },
   { title: 'Learning Streak', content: '9 day streak, +12 trust this week' },
-  { title: 'Upcoming Session', content: 'Today 18:30 — UI Design exchange' }
+  { title: 'Upcoming Session', content: 'Today 18:30 — UI Design exchange' },
+  { title: 'Matches', content: '4 high-compatibility mentors in your city' },
+  { title: 'Notifications', content: '2 match invites, 1 session reminder' },
+  { title: 'Session History', content: '18 completed sessions • 4.8 avg rating' }
 ];
 
 export function DashboardCards() {

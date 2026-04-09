@@ -1,47 +1,71 @@
-# Stella Match
+# StellaMatch
 
-Stella Match is an AI-powered skill-exchange marketplace for engineering students in the same city. It includes auth, profile/matching APIs, dashboard UI, AI placeholder agents, queue/cache-ready architecture, and DevOps scaffolding.
+StellaMatch is a full-stack marketplace for peer skill exchange and real-time learning sessions.
 
-## Stack
-- Next.js App Router + TypeScript + Tailwind + Framer Motion + Zustand-ready structure
-- PostgreSQL + Prisma
-- Redis + BullMQ-ready services
-- JWT auth + HTTP-only cookie refresh token handling
-- Jest + RTL tests
-- Docker + GitHub Actions CI
+## Features
+- User authentication and profile management
+- AI-assisted skill analysis and student matching
+- Session scheduling and dashboard/admin surfaces
+- Production-oriented infrastructure and compliance files
 
-## Run locally
+## Installation
 ```bash
 npm install
 cp .env.example .env
 npm run dev
 ```
 
-Port fallback is automatic via `scripts/dev.ts`.
+## Environment Setup
+Use the following files:
+- `.env.example` for baseline values
+- `.env.development` for local development
+- `.env.production` for production deployments
 
-## Docker
+Required variables:
+- `PORT`
+- `DATABASE_URL`
+- `REDIS_URL`
+- `JWT_SECRET`
+- `API_BASE_URL`
+- `NODE_ENV`
+
+## Docker Usage
 ```bash
 docker-compose up --build
 ```
 
-## Implemented modules
-- Authentication API skeleton (`/app/api/auth/*`)
-- AI Skill Analyzer Agent (`/agents/skillAnalyzerAgent.ts`)
-- Matching engine (`/services/matchingEngine.ts`)
-- Animated cinematic hero and dashboard cards
-- Admin dashboard placeholder
-- Prisma schema, seed, and indexing
-- Logging with Winston + rotation
-- Legal documents in `/config/legal`
-- SEO assets in `/public`
+Services included:
+- `app` (Next.js server)
+- `postgres` (PostgreSQL)
+- `redis` (cache/session store)
 
-## Security notes
-- Bcrypt password hashing service
-- Zod input validation
-- Helmet/rate-limiting service hooks
-- Secure cookie defaults (`httpOnly`, `sameSite=strict`, `secure`)
+## Testing
+```bash
+npm test
+```
 
-## Future extension points
-- Replaceable AI model provider in `/agents`
-- Queue workers under `/services/queue`
-- Socket session orchestration in `/services/realtime`
+Example tests live in `tests/` and include unit, API utility, and component coverage.
+
+## Deployment Steps
+1. Build image: `docker build -t stellamatch .`
+2. Set production env values in `.env.production`
+3. Run migrations/seed data
+4. Start services with docker compose or your orchestrator
+5. Verify logs in `/logs`
+
+## Legal Documents
+- `legal/privacy-policy.md`
+- `legal/terms-and-conditions.md`
+- `legal/cookie-policy.md`
+- `legal/disclaimer.md`
+
+## Infrastructure and Config Highlights
+- Port fallback: `utils/portManager.js`
+- Logging: `config/logger.js`
+- Redis config: `config/redis.js`
+- Security middleware config: `config/security.js`
+- Performance middleware config: `config/performance.js`
+- Error handling helpers: `utils/errorHandler.js`
+
+## License
+MIT (see `LICENSE`).

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Stella Match',
-  description: 'AI-powered skill exchange for engineering students',
+  title: 'StellaMatch',
+  description: 'AI-powered knowledge barter marketplace for engineering students in the same city',
   robots: { index: true, follow: true }
 };
 
