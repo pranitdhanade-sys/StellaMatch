@@ -1,47 +1,73 @@
-# Stella Match
+# SkillSwap Nexus
 
-Stella Match is an AI-powered skill-exchange marketplace for engineering students in the same city. It includes auth, profile/matching APIs, dashboard UI, AI placeholder agents, queue/cache-ready architecture, and DevOps scaffolding.
+SkillSwap Nexus is an AI-powered, full-stack knowledge-barter marketplace where engineering students in the same city exchange skills instead of money.
 
-## Stack
-- Next.js App Router + TypeScript + Tailwind + Framer Motion + Zustand-ready structure
-- PostgreSQL + Prisma
-- Redis + BullMQ-ready services
-- JWT auth + HTTP-only cookie refresh token handling
-- Jest + RTL tests
-- Docker + GitHub Actions CI
+## Core capabilities
 
-## Run locally
+- Secure auth with signup, login, logout, refresh, forgot/reset password, and email verification placeholders.
+- Student profiles with city, college, skills, links, skill tags, availability, and learning goals.
+- AI skill analyzer endpoint with dynamic skill-value scoring and confidence.
+- Matching engine with compatibility score and explainable factors.
+- Real-time session scheduling placeholder for 1:1 learning sessions.
+- Marketplace dashboard + admin control deck scaffold.
+- Cinematic 2.5D UI theme with floating magical-tech elements and a robotic mentor mascot.
+
+## Tech stack
+
+- **Frontend:** Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, React Three Fiber, Zustand.
+- **Backend:** Next.js API Routes (REST), JWT auth.
+- **Data:** PostgreSQL + Prisma ORM.
+- **Cache/Queue:** Redis + BullMQ-ready setup.
+- **Realtime:** Socket.io service scaffold.
+- **Quality:** Jest + React Testing Library, ESLint, Prettier, Husky, Commitlint.
+- **Ops:** Docker, docker-compose, GitHub Actions CI.
+
+## Quick start
+
 ```bash
 npm install
 cp .env.example .env
 npm run dev
 ```
 
-Port fallback is automatic via `scripts/dev.ts`.
+If port `3000` is in use, the app auto-selects the next free port.
 
-## Docker
+## Docker run
+
 ```bash
 docker-compose up --build
 ```
 
-## Implemented modules
-- Authentication API skeleton (`/app/api/auth/*`)
-- AI Skill Analyzer Agent (`/agents/skillAnalyzerAgent.ts`)
-- Matching engine (`/services/matchingEngine.ts`)
-- Animated cinematic hero and dashboard cards
-- Admin dashboard placeholder
-- Prisma schema, seed, and indexing
-- Logging with Winston + rotation
-- Legal documents in `/config/legal`
-- SEO assets in `/public`
+## Important directories
 
-## Security notes
-- Bcrypt password hashing service
-- Zod input validation
-- Helmet/rate-limiting service hooks
-- Secure cookie defaults (`httpOnly`, `sameSite=strict`, `secure`)
+- `app/` - App Router pages + API routes
+- `components/` - UI components
+- `animations/` - reusable motion/visual effects
+- `agents/` - AI analyzer logic placeholder
+- `services/` - auth, matching, queue, redis, realtime
+- `utils/` - jwt, env, logger, csrf
+- `tests/` - unit and component tests
+- `database/` - Prisma schema + seed
+- `config/legal/` - privacy, terms, cookie policy
 
-## Future extension points
-- Replaceable AI model provider in `/agents`
-- Queue workers under `/services/queue`
-- Socket session orchestration in `/services/realtime`
+## Security defaults
+
+- HTTP-only secure refresh token cookie
+- SameSite strict cookies
+- CSRF token issuance and verification on refresh
+- Bcrypt password hashing
+- Helmet-friendly middleware headers
+- Rate limiting service hook
+- Prisma ORM for SQL injection safety
+
+## SEO + legal
+
+- `public/sitemap.xml`
+- `public/robots.txt`
+- `config/legal/privacy-policy.md`
+- `config/legal/terms-and-conditions.md`
+- `config/legal/cookie-policy.md`
+
+## Current status
+
+This repository is a production-oriented scaffold with working auth/session/profile/matching APIs, tests, and deploy tooling; replace placeholder AI/video/email integrations when wiring external providers.

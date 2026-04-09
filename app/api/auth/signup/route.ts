@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { hashPassword, issueTokens } from '@/services/authService';
+import { issueCsrfSecret, issueCsrfToken } from '@/utils/csrf';
 
 const bodySchema = z.object({
   email: z.string().email(),
@@ -15,12 +16,16 @@ export async function POST(req: NextRequest) {
 
   // TODO: persist user in Prisma
   const tokens = issueTokens('mock-user-id', data.email);
+  const secret = issueCsrfSecret();
+  const csrfToken = issueCsrfToken(secret);
 
   const res = NextResponse.json({
     user: { id: 'mock-user-id', email: data.email, name: data.name, city: data.city },
-    verificationRequired: true
+    verificationRequired: true,
+    csrfToken
   });
 
   res.cookies.set('refresh_token', tokens.refreshToken, { httpOnly: true, sameSite: 'strict', secure: true });
+  res.cookies.set('csrf_secret', secret, { httpOnly: true, sameSite: 'strict', secure: true });
   return res;
 }

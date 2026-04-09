@@ -1,5 +1,5 @@
 {
-  "name": "stella-match",
+  "name": "skillswap-nexus",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,10 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "tsx database/prisma/seed.ts",
-    "prepare": "husky"
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky",
+    "commitlint": "commitlint --from=HEAD~1 --to=HEAD"
   },
   "dependencies": {
     "@prisma/client": "^5.23.0",
@@ -31,6 +34,7 @@
     "pino-http": "^10.3.0",
     "rate-limiter-flexible": "^6.0.0",
     "react": "18.3.1",
+    "@react-three/fiber": "^8.17.10",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.53.1",
     "socket.io": "^4.8.1",
