@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  passwordHash   String
+  name           String
+  city           String
+  college        String?
+  githubUrl      String?
+  portfolioUrl   String?
+  trustScore     Int       @default(50)
+  skillValue     Int       @default(0)
+  sessionsAsHost Session[] @relation("host")
+  sessionsAsLearner Session[] @relation("learner")
+  createdAt      DateTime  @default(now())
+
+  @@index([city])
+  @@index([skillValue])
+}
+
+model Session {
+  id          String   @id @default(cuid())
+  hostId      String
+  learnerId   String
+  startsAt    DateTime
+  status      String   @default("scheduled")
+  feedback    String?
+  rating      Int?
+  host        User     @relation("host", fields: [hostId], references: [id])
+  learner     User     @relation("learner", fields: [learnerId], references: [id])
+
+  @@index([startsAt])
+}
