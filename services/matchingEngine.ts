@@ -3,13 +3,15 @@ export type MatchInput = {
   mentorSkills: string[];
   sameCity: boolean;
   availabilityOverlap: number;
+  learningIntentAlignment?: number;
 };
 
 export function calculateCompatibility(input: MatchInput): number {
   const skillGap = input.mentorSkills.filter((skill) => !input.learnerSkills.includes(skill)).length;
   const cityBoost = input.sameCity ? 20 : 0;
   const availability = Math.min(30, input.availabilityOverlap * 10);
-  return Math.max(0, Math.min(100, skillGap * 12 + cityBoost + availability));
+  const intent = Math.min(20, (input.learningIntentAlignment ?? 0) * 5);
+  return Math.max(0, Math.min(100, skillGap * 12 + cityBoost + availability + intent));
 }
 
 export function explainMatch(score: number): string {

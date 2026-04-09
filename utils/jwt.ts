@@ -14,3 +14,7 @@ export function signRefreshToken(payload: AuthPayload) {
 export function verifyAccessToken(token: string) {
   return jwt.verify(token, env.JWT_SECRET) as AuthPayload;
 }
+
+export function verifyRefreshToken(token: string) {
+  return jwt.verify(token, env.JWT_REFRESH_SECRET) as AuthPayload;
+}
