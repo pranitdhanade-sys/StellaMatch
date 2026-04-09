@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+coverage
+logs
+dist
+.next
+npm-debug.log*

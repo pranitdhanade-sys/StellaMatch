@@ -7,6 +7,7 @@ export default function AdminPage() {
         <li>Session monitoring</li>
         <li>Logs viewer</li>
         <li>Reports queue</li>
+        <li>Trust score moderation</li>
       </ul>
     </main>
   );

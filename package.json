@@ -1,9 +1,9 @@
 {
-  "name": "stella-match",
+  "name": "stellamatch",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "tsx scripts/dev.ts",
+    "dev": "node scripts/dev.js",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
@@ -12,15 +12,20 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "tsx database/prisma/seed.ts",
-    "prepare": "husky"
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "prepare": "husky",
+    "commitlint": "commitlint --from=HEAD~1 --to=HEAD"
   },
   "dependencies": {
     "@prisma/client": "^5.23.0",
     "bcryptjs": "^2.4.3",
     "bullmq": "^5.21.1",
     "cookie": "^0.7.2",
+    "compression": "^1.7.5",
     "cors": "^2.8.5",
     "csrf": "^3.1.0",
+    "detect-port": "^1.6.1",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.11.17",
     "helmet": "^8.0.0",
@@ -31,6 +36,7 @@
     "pino-http": "^10.3.0",
     "rate-limiter-flexible": "^6.0.0",
     "react": "18.3.1",
+    "@react-three/fiber": "^8.17.10",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.53.1",
     "socket.io": "^4.8.1",
